@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build active C/C++ file",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "$file = \"${file}\"; $dir = Split-Path -Parent $file; $name = [IO.Path]::GetFileNameWithoutExtension($file); $ext = [IO.Path]::GetExtension($file).ToLowerInvariant(); $compiler = if ($ext -eq '.c') { 'gcc.exe' } elseif ($ext -eq '.cpp') { 'g++.exe' } else { Write-Error 'Open a .c or .cpp file first'; exit 1 }; & $compiler $file -Wall -Wextra -g -o (Join-Path $dir \"$name.exe\"); exit $LASTEXITCODE"
+      ],
+      "problemMatcher": "$gcc",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Run active C/C++ file",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "$file = \"${file}\"; $dir = Split-Path -Parent $file; $name = [IO.Path]::GetFileNameWithoutExtension($file); $exe = Join-Path $dir \"$name.exe\"; if (-not (Test-Path -LiteralPath $exe)) { Write-Error 'Build the active file first with Ctrl+Shift+B'; exit 1 }; & $exe"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}

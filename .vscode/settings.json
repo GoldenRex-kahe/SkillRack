@@ -1,0 +1,18 @@
+{
+  "files.associations": {
+    "*.c": "c",
+    "*.cpp": "cpp"
+  },
+  "C_Cpp.default.compilerPath": "g++.exe",
+  "C_Cpp.default.cStandard": "c17",
+  "C_Cpp.default.cppStandard": "c++17",
+  "C_Cpp.default.intelliSenseMode": "windows-gcc-x64",
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "gitdoc.enabled": true,
+  "gitdoc.autoCommitDelay": 10000,
+  "gitdoc.autoPush": "onCommit",
+  "gitdoc.pushMode": "push",
+  "gitdoc.pullOnOpen": true,
+  "gitdoc.commitValidationLevel": "none"
+}
