@@ -1,8 +1,3 @@
-#include <algorithm>
-#include <vector>
-
-using namespace std;4
-
 class Solution {
 public:
     int trap(vector<int>& height) {
